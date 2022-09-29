@@ -1,5 +1,5 @@
 const { Schema, model } = require("mongoose");
-const Thought = require("./Thought");
+const { thoughtSchema } = require("./Thought");
 
 const userSchema = new Schema({
   username: {
@@ -15,10 +15,10 @@ const userSchema = new Schema({
     match:
       /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
   },
-  thoughts: [Thought._id],
-  friends: [this._id],
+  thoughts: [thoughtSchema],
+  friends: [this],
 });
 
 const User = model("user", userSchema);
-module.exports = User;
+module.exports = { User, userSchema };
 // SCHEMA SETTINGS

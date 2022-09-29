@@ -1,10 +1,10 @@
-const { Schema, model } = require("mongoose");
-const User = require("./User");
+const { Schema, Types } = require("mongoose");
+const { userSchema } = require("./User");
 
 const reactionSchema = new Schema({
   reactionId: {
-    type: Schema.Types.ObjectId, // Maybe?
-    default: ObjectId,
+    type: Types.ObjectId, // Maybe?
+    default: new Types.ObjectId(),
   },
   reactionBody: {
     type: String,
@@ -12,7 +12,7 @@ const reactionSchema = new Schema({
     max: 280,
   },
   username: {
-    type: User,
+    type: String,
     required: true,
   },
   createdAt: {
@@ -22,6 +22,5 @@ const reactionSchema = new Schema({
   },
 });
 
-const Reaction = model("reaction", reactionSchema);
-module.exports = Reaction;
+module.exports = { reactionSchema };
 // SCHEMA SETTINGS
