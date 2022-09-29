@@ -1,3 +1,4 @@
+const { ObjectID } = require("bson");
 const { Schema, model } = require("mongoose");
 const { thoughtSchema } = require("./Thought");
 
@@ -15,8 +16,8 @@ const userSchema = new Schema({
     match:
       /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
   },
-  thoughts: [thoughtSchema],
-  friends: [this],
+  thoughts: [{ type: ObjectID, ref: "thought" }],
+  friends: [{ type: ObjectID, ref: "user" }],
 });
 
 const User = model("user", userSchema);
