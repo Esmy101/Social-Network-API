@@ -1,5 +1,4 @@
 const { Schema, Types } = require("mongoose");
-const { userSchema } = require("./User");
 
 const reactionSchema = new Schema({
   reactionId: {

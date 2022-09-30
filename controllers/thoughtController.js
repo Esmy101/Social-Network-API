@@ -1,4 +1,5 @@
-const { User, Thought } = require("../models");
+const { receiveMessageOnPort } = require("worker_threads");
+const { User, Thought, Reaction } = require("../models");
 
 module.exports = {
   //Get all Thoughts
@@ -43,13 +44,29 @@ module.exports = {
   },
   // Delete a Thought
   deleteThought(req, res) {
-    Thought.findOneAndDelete({ _id: req.params.thoughtId })
+    Thought.findOneAndDelete(
+      { _id: req.params.thoughtId },
+      { runValidators: true, new: true }
+    )
       .then((thought) =>
         !thought
           ? res.status(404).json({ message: "No Thought with that ID" })
-          : Thought.deleteMany({ _id: { $in: user.thoughts } })
+          : res.json(thought)
       )
-      .then(() => res.json({ message: "Thought deleted!" }))
       .catch((err) => res.status(500).json(err));
   },
+  // Add a Reaction
+  addReaction(req, res) {
+    Thought.findOneAndUpdate(
+      { _id: req.params.thoughtId },
+      { $addToSet: { reactions: req.body } },
+      { runValidators: true, new: true }
+    )
+      .then((thought) =>
+        !thought ? res.status(404).json({ message: " :(" }) : res.json(thought)
+      )
+      .catch((err) => res.status(500).json(err));
+  },
+  removeReaction(req, res) {},
+  // Delete
 };
