@@ -52,20 +52,32 @@ Mock-Up
 
 _GET routes to return all users and all thoughts_
 
+![GET All](./Imeges/all%20thoughts%20%26%20users.gif)
+
 _GET routes to return a single user and a single thought_
+
+![GET One](./Imeges/a%20thought%20%26%20user.gif)
 
 _POST, PUT, and DELETE routes for users_
 
+![POST, PUT, and DELETE user](./Imeges/user%20post%2Cput%2Cdelete.gif)
+
 _POST, PUT, and DELETE routes for thoughts_
+
+![POST, PUT, and DELETE thoughts](./Imeges/thoughts%20post%2Cput%2Cdelete.gif)
 
 _POST and DELETE routes for a user’s friend_
 
+![POST and DELETE friend](./Imeges/friend.gif)
+
 _POST and DELETE routes for reactions to thoughts_
+
+![POST and DELETE reaction](./Imeges/reaction.gif)
 
 ## Questions
 
 ---
 
-[Video]()
+[Video](https://drive.google.com/file/d/1xgDzAjOqOY0grxJRlMiNTabFUR9i-2Zu/view?usp=sharing)
 
 [GitHub](https://github.com/)
